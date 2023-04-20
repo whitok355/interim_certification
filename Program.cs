@@ -6,30 +6,28 @@
 // [“Russia”, “Denmark”, “Kazan”] → []
 
 string [] arr = {"va", "'", "old", "bold", "uppercase", "notebook", "mouse", "table", "book", "food"};
-string [] newArr = new string[arr.Length];
+int index = 0;
 
-string ReduceElement(string el)
-{
-    string newEl= "";
-
-    for(int i = 0; i < el.Length; i++)
-    {
-        if(i < 3)
-        {
-            newEl += el[i];
-        } else{
-            return newEl;
-        }
-    }
-    return newEl;
-}
-
-void FillArr()
+void Sort()
 {
     for(int i = 0; i < arr.Length; i++)
     {
-        newArr[i] = ReduceElement(arr[i]);
+        if(arr[i].Length <= 3)
+        {
+            index++;
+        }
     }
+    string [] newArr = new string[index];
+    index = 0;
+    for(int i = 0; i < arr.Length; i++)
+    {
+        if(arr[i].Length <= 3)
+        {
+            newArr[index] = arr[i];
+            index++;
+        }
+    }
+    Print(newArr);
 }
 
 void Print(string[] array)
@@ -39,7 +37,5 @@ void Print(string[] array)
         Console.WriteLine($"{array[i]}   ---  {array[i].Length}");
     }
 }
-FillArr();
 
-Print(arr);
-Print(newArr);
+Sort();
